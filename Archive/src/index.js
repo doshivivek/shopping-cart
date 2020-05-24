@@ -14,7 +14,6 @@ import './index.css';
 const initialState = {
   cart: [],
   products: [],
-  // type: 'fruit';
 };
 
 const store = createStore(appReducer, initialState, applyMiddleware(
