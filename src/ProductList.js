@@ -1,10 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import  { selectType } from './actions/appActions'
+import  { selectType, addToCart } from './actions/appActions'
 
 class ProductList extends React.Component{
-
-    
     
     render() {
         const types = new Set()
@@ -27,9 +25,10 @@ class ProductList extends React.Component{
                                         <div className="mb-2">{product.description}</div>
                                         <div className="mt-3">Unit Price = {product.price}</div>
                                         <div className="">Rating: {product.rating}</div>
-                                        <button>Add me</button>
+                                        <button onClick={() => {
+                                            this.props.addToCart(product);
+                                        }}>Add me</button>
                                     </div>
-                                    {/* onClick = {this.props.addToCart()} */}
                                     </div>)
                                 }
                             </ul>
@@ -40,7 +39,8 @@ class ProductList extends React.Component{
 }
 
 const mapDispatchToProps = {
-    selectType
+    selectType,
+    addToCart,
 };
 
 const mapStateToProps = (state) => {
